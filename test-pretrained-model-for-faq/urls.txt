@@ -2,3 +2,6 @@ https://www.sbert.net/docs/sentence_transformer/pretrained_models.html
 
 
 http://localhost:8000/docs
+
+
+http://localhost:8000/docs#/default/query_faq_faq_query_post
