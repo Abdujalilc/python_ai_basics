@@ -1,0 +1,24 @@
+--------------------------------------------------
+
+python --version
+Python 3.11.1
+
+C:\Users\User\AppData\Local\Programs\Python\Python311\Scripts\
+C:\Users\User\AppData\Local\Programs\Python\Python311\
+////had problem with libra, cause libra also has its own python
+
+--------------------------------------------------
+python -m venv ai_env
+///activate python with specific version
+c:\AI_Project> C:\path\to\python3.8\python.exe -m venv ai_env
+
+--------------------------------------------------
+
+pip install numpy
+pip install scikit-learn
+
+--------------------------------------------------
+
+
+
+--------------------------------------------------

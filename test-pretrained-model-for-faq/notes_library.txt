@@ -1,0 +1,6 @@
+-fastapi /// bu swagger yoki mvc patern da ishlay oladigan logikalarni yozishga yordam beradi, 
+huddi .net dagi
+
+-uvicorn /// bu o'sha app ni ishlatadigan env, huddi kestreldek, 
+
+- sentence-transformers /// bu ai bilan ishlaydigan kutubhona

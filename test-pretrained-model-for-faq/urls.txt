@@ -1,0 +1,4 @@
+https://www.sbert.net/docs/sentence_transformer/pretrained_models.html
+
+
+http://localhost:8000/docs
