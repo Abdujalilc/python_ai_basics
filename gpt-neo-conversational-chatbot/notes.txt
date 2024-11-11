@@ -1,0 +1,13 @@
+pip install fastapi uvicorn transformers torch sqlite3
+
+uvicorn app:app --reload
+
+{
+  "user_input": "Hello, how are you?"
+}
+
+-------------------------------------------------
+1. python -m venv gpt_neo_env
+2. gpt_neo_env\Scripts\activate
+3. pip install -r requirements.txt
+4. python app.py
