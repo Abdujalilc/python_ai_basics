@@ -1,0 +1,9 @@
+****chatbot with sentence_transformer and gpt_neo****
+
+1. Extract questions, answers, and compute embeddings for responses from the SQLite faqs table.
+2. Embed the user’s question and search for similar questions by comparing embeddings in faqs.
+3. Retrieve all prior questions and answers from the SQLite conversations table based on the user ID.
+4. Combine similar answers with prior user Q&A history to create a personalized context.
+5. Generate a tailored, context-aware response using GPT-Neo based on this enriched context.
+6. Save the new GPT-Neo response to the conversations table with the user ID.
+7. Send the response back to the user.

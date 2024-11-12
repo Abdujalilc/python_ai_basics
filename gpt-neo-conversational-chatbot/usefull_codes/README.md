@@ -35,8 +35,8 @@ To build a **conversational chatbot** capable of handling dynamic, context-aware
    - Takes the most relevant FAQ answer and generates a **conversational response** in **natural language**.
    - Optionally, incorporates previous questions and answers in the conversation for **context**, making the response more fluent and relevant.
 
-- **Store Conversations**:  
-   The chatbot's previous questions and answers can be stored in a **conversations table** and used by GPT-Neo to maintain **conversation context**.
+3. **Store Conversations**:  
+   - The chatbot's previous questions and answers can be stored in a **conversations table** and used by GPT-Neo to maintain **conversation context consistent**.
 
 ## Why Use Both?
 
