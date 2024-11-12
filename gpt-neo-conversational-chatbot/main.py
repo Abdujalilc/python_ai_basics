@@ -28,10 +28,10 @@ def embed_text(text):
 async def load_embeddings():
     cursor.execute("SELECT question FROM faqs")
     if not cursor.fetchall():  # Populate FAQs if empty
-        faqs = [("What is AI?", "AI stands for Artificial Intelligence."),
-                ("What is FastAPI?", "FastAPI is a web framework.")]
+        with open("faqs.json") as f:
+            faqs = json.load(f)
         cursor.executemany("INSERT INTO faqs (question, answer, embedding) VALUES (?, ?, ?)", 
-                           [(q, a, json.dumps(embed_text(q))) for q, a in faqs])
+                           [(q["question"], q["answer"], json.dumps(embed_text(q["question"]))) for q in faqs])
         conn.commit()
 
 @app.post("/ask")
@@ -61,7 +61,7 @@ async def ask(request: UserQuery):
                         [f"Q: {q}\nA: {a}" for q, a in conversation_history])
     
     # Step 5: Generate GPT-Neo response
-    gpt_response = gpt_neo(f"{context}\nQ: {user_query}\nA:", max_length=50)[0]["generated_text"].split("A:")[-1]
+    gpt_response = gpt_neo(f"{context}\nQ: {user_query}\nA:", max_new_tokens=50)[0]["generated_text"].split("A:")[-1]
 
     # Step 6: Save response to conversations
     cursor.execute("INSERT INTO conversations (user_id, question, answer) VALUES (?, ?, ?)", (user_id, user_query, gpt_response))

@@ -1,0 +1,126 @@
+[
+    {
+        "question": "What is Python",
+        "answer": "Python is a high-level, interpreted programming language."
+    },
+    {
+        "question": "Who is creator Python?",
+        "answer": "The creator of Python is **Guido van Rossum**, a Dutch programmer. He began working on Python in the late 1980s as a successor to the ABC programming language, which was developed at the Centrum Wiskunde & Informatica (CWI) in the Netherlands. Van Rossum released the first version of Python in 1991. His aim was to create a language that emphasized code readability and simplicity, making it easy to learn and use. Guido van Rossum was known as Python’s `Benevolent Dictator For Life` (BDFL), overseeing its development until he stepped down from this role in 2018. Python has since been maintained by the Python Software Foundation (PSF) and a large community of contributors"
+    },
+    {
+        "question": "What is JavaScript?",
+        "answer": "JavaScript is a versatile programming language commonly used to add interactivity to web pages. It was initially developed by Netscape as a way to add dynamic content to websites and has since become an essential tool for front-end web development. JavaScript can be executed on both the client and server sides, thanks to runtime environments like Node.js."
+    },
+    {
+        "question": "Who created JavaScript?",
+        "answer": "JavaScript was created by Brendan Eich in 1995 while he was working at Netscape Communications Corporation. Originally called Mocha, then LiveScript, it was later renamed to JavaScript as part of a marketing strategy. JavaScript quickly became popular and is now one of the most widely used languages in web development."
+    },
+    {
+        "question": "What is SQL?",
+        "answer": "SQL, or Structured Query Language, is a standard programming language specifically designed for managing and manipulating relational databases. SQL allows users to create, read, update, and delete (CRUD) data stored in databases. It is used extensively in database management systems such as MySQL, PostgreSQL, and Microsoft SQL Server."
+    },
+    {
+        "question": "What is the purpose of a compiler?",
+        "answer": "A compiler is a specialized software that translates code written in a high-level programming language (like C++ or Java) into machine code that can be executed by a computer. This process enables programs to run efficiently on a given hardware platform. Compilers also perform optimizations to improve the runtime performance of the code."
+    },
+    {
+        "question": "What is the difference between Python 2 and Python 3?",
+        "answer": "Python 2 and Python 3 are two major versions of the Python programming language, with significant differences in syntax and functionality. Python 3, released in 2008, introduced changes to improve language consistency and fix design flaws. Some of the notable changes include print as a function, integer division behavior, and Unicode support by default. Python 2 reached end-of-life on January 1, 2020, so Python 3 is now the recommended version for development."
+    },
+    {
+        "question": "What is object-oriented programming (OOP)?",
+        "answer": "Object-oriented programming (OOP) is a programming paradigm based on the concept of 'objects' that contain both data (attributes or properties) and methods (functions or behaviors). It promotes code organization through principles like encapsulation, inheritance, polymorphism, and abstraction. OOP languages, such as Python, Java, and C++, allow developers to model real-world entities as objects, making complex systems easier to design and maintain."
+    },
+    {
+        "question": "What is a database?",
+        "answer": "A database is an organized collection of data that allows for efficient storage, retrieval, and management. Databases are used to store information in a structured way, often in tables, so that users and applications can quickly find the data they need. Databases can be relational, like MySQL or PostgreSQL, or non-relational, like MongoDB or Cassandra."
+    },
+    {
+        "question": "What is REST in web development?",
+        "answer": "REST (Representational State Transfer) is an architectural style for building web services. It relies on stateless, client-server communication and uses standard HTTP methods like GET, POST, PUT, and DELETE. RESTful APIs allow systems to interact with one another over the web in a simple, flexible, and scalable way, making it a popular choice for web services."
+    },
+    {
+        "question": "What is an API?",
+        "answer": "An API, or Application Programming Interface, is a set of rules that allows different software applications to communicate with each other. APIs define the methods and data formats that programs should use to request and exchange information. They play a critical role in enabling integrations between applications, making functionalities available across different software systems."
+    },
+    {
+        "question": "What is the purpose of Docker?",
+        "answer": "Docker is a platform that allows developers to package applications and their dependencies into lightweight, portable containers. These containers can run consistently across different environments, from development to production. Docker helps improve software deployment efficiency and scalability, making it easier to manage and deploy applications."
+    },
+    {
+        "question": "How does Python handle memory management?",
+        "answer": "Python handles memory management automatically through a private heap space where all objects and data structures are stored. The Python memory manager regulates this heap, and the built-in garbage collector recycles unused memory, reducing the risk of memory leaks."
+    },
+    {
+        "question": "What are virtual environments in Python?",
+        "answer": "Virtual environments in Python are tools that help to keep dependencies required by different projects separate by creating isolated environments for them. This is especially useful when working with multiple projects that require different versions of the same packages."
+    },
+    {
+        "question": "What is the significance of indentation in Python?",
+        "answer": "In Python, indentation is used to define blocks of code. Unlike other programming languages that use braces or keywords, Python uses whitespace indentation, making the code visually clear and consistent. Incorrect indentation can lead to syntax errors."
+    },
+    {
+        "question": "Why is Python considered beginner-friendly?",
+        "answer": "Python is considered beginner-friendly due to its simple and readable syntax, which closely resembles the English language. This makes it easier for new programmers to learn coding concepts without getting overwhelmed by complex syntax rules."
+    },
+    {
+        "question": "What is PEP in Python?",
+        "answer": "PEP stands for Python Enhancement Proposal. It is a design document providing information to the Python community or describing a new feature for Python or its processes. PEPs are the primary mechanisms for proposing major new features, collecting community input, and documenting design decisions."
+    },
+    {
+        "question": "What are some common uses of Python?",
+        "answer": "Python is widely used in various fields such as web development, data analysis, artificial intelligence, machine learning, automation, scientific computing, and more. Its versatility and extensive libraries make it a popular choice among developers."
+    },
+    {
+        "question": "What is the Python Software Foundation?",
+        "answer": "The Python Software Foundation (PSF) is a non-profit organization that manages the development and release of the Python programming language. It also supports and facilitates the growth of a diverse and international community of Python programmers."
+    },
+    {
+        "question": "When was Python first released?",
+        "answer": "Python was first released in 1991 by Guido van Rossum. Since then, it has undergone many changes and improvements, with major versions like Python 2 and Python 3 introducing significant updates."
+    },
+    {
+        "question": "What are Python's main advantages?",
+        "answer": "Python's main advantages include simplicity and readability, which make it easy for beginners to learn and for experienced developers to quickly write code. Python also has an extensive standard library, supporting a wide range of tasks from web development to data analysis. Additionally, Python's community is vast and active, meaning a lot of resources, libraries, and frameworks are readily available."
+    },
+    {
+        "question": "What is a Python virtual environment?",
+        "answer": "A Python virtual environment is an isolated environment for Python projects that allows developers to manage dependencies separately from the system’s global Python installation. This ensures that packages used in one project do not interfere with others, making it easier to manage project dependencies and versions."
+    },
+    {
+        "question": "What is PEP 8?",
+        "answer": "PEP 8 is the official style guide for writing Python code. It provides guidelines and best practices on how to format Python code for maximum readability. Topics covered in PEP 8 include naming conventions, indentation, line length, and spacing, all designed to improve code consistency and maintainability."
+    },
+    {
+        "question": "What is a Python decorator?",
+        "answer": "A Python decorator is a function that modifies the behavior of another function or class. Decorators are often used to add functionality to functions or methods, such as logging, authentication, or access control, without altering the original function's structure. They are commonly applied with the '@' symbol above a function definition."
+    },
+    {
+        "question": "What is the Global Interpreter Lock (GIL) in Python?",
+        "answer": "The Global Interpreter Lock (GIL) is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once in CPython (the main Python implementation). While it simplifies memory management, the GIL can be a limitation for CPU-bound programs, as it effectively allows only one thread to run Python code at a time."
+    },
+    {
+        "question": "What are Python comprehensions?",
+        "answer": "Python comprehensions are concise ways to generate lists, sets, or dictionaries based on existing iterables. List, set, and dictionary comprehensions allow for more readable and often faster code by condensing loops and conditional logic into a single line. For example, `[x**2 for x in range(10)]` generates a list of squares from 0 to 9."
+    },
+    {
+        "question": "What is the difference between a Python list and a tuple?",
+        "answer": "The main difference between a Python list and a tuple is mutability. Lists are mutable, meaning their elements can be changed after creation. Tuples, on the other hand, are immutable, so once created, their contents cannot be altered. Tuples are often used for fixed data collections, whereas lists are used for collections that may change."
+    },
+    {
+        "question": "What is a lambda function in Python?",
+        "answer": "A lambda function in Python is a small, anonymous function defined with the `lambda` keyword. Lambda functions are useful for simple operations or short-lived functions that are not meant to be reused. They are often used with functions like `map`, `filter`, and `sorted` to apply small transformations in a concise way."
+    },
+    {
+        "question": "What is a generator in Python?",
+        "answer": "A generator in Python is a special type of iterator that yields values one at a time using the `yield` keyword, instead of returning them all at once. Generators are memory-efficient, as they generate values on-the-fly and do not store the entire sequence in memory. They are commonly used for large data processing tasks."
+    },
+    {
+        "question": "What is the difference between `==` and `is` in Python?",
+        "answer": "In Python, `==` checks if the values of two variables are equal, whereas `is` checks if they refer to the same object in memory. For example, two different lists with identical content are considered equal with `==`, but `is` would return `False` since they are distinct objects in memory."
+    },
+    {
+        "question": "",
+        "answer": ""
+    }
+]
