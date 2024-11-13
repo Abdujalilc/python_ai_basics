@@ -6,6 +6,7 @@ import sqlite3
 import uvicorn
 import json
 import datetime
+from fastapi.responses import RedirectResponse
 
 app = FastAPI()
 embedder = SentenceTransformer('all-MiniLM-L6-v2')
@@ -28,12 +29,15 @@ def embed_text(text):
 @app.on_event("startup")
 async def load_embeddings():
     cursor.execute("SELECT question FROM faqs")
-    if not cursor.fetchall():  # Populate FAQs if empty
+    if not cursor.fetchall():
         with open("faqs.json") as faqs_json:
             faqs = json.load(faqs_json)
         cursor.executemany("INSERT INTO faqs (question, answer, embedding) VALUES (?, ?, ?)", 
                            [(row["question"], row["answer"], json.dumps(embed_text(row["question"]))) for row in faqs])
         conn.commit()
+@app.get("/")
+async def root():
+    return RedirectResponse(url="/docs")
 
 @app.post("/ask")
 async def ask(request: UserQuery):
@@ -55,7 +59,7 @@ async def ask(request: UserQuery):
     similar_faqs = sorted(similar_faqs, key=lambda x: x[2], reverse=True)[:3]
 
     if not similar_faqs:
-        return {"response": "I do not know"}
+        similar_faqs = [("No FAQs available", "No answers available", 0.0)]
 
     # Step 3: Retrieve previous user conversations
     thirty_minutes_ago = datetime.datetime.now() - datetime.timedelta(minutes=30)
@@ -64,12 +68,16 @@ async def ask(request: UserQuery):
     conversation_history = cursor.fetchall()
 
     # Step 4: Create context with similar answers and conversation history
-    context = "\n".join([f"FAQ - Q: {q}\nA: {a}" for q, a, _ in similar_faqs] + 
+    context = "\n".join([f"Current - Q: {q}\nA: {a} (Similarity: {similarity})" for q, a, similarity in similar_faqs] + 
                     [f"History - Q: {q}\nA: {a}" for q, a in conversation_history])
 
-    # Add an end marker after the user's question
-    gpt_response = gpt_neo(f"{context}\nQ: {user_query}\nA:", max_new_tokens=100)[0]["generated_text"].split("A:")[-1].split("Q:")[0].strip()
-    ##gpt_response = gpt_response.split("A:")[-1].strip()
+    # Step 5: Generate a tailored, context-aware response using GPT-Neo
+    gpt_response = gpt_neo(f"{context}\nQ: {user_query}\nA:", max_new_tokens=200, temperature=0.7)[0]["generated_text"]
+    """answer_start = gpt_response.find("A:")
+    if answer_start != -1:
+        gpt_response = gpt_response[answer_start + 2:].strip()"""
+
+
 
     # Step 6: Save response to conversations
     cursor.execute("DELETE FROM conversations WHERE timestamp < ?", (thirty_minutes_ago,))

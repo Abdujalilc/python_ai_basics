@@ -1,0 +1,4 @@
+1. python -m venv langchain_env
+2. langchain_env\Scripts\activate
+3. pip install -r requirements.txt
+4. python app_streamlit.py
