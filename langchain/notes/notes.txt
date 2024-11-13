@@ -1,4 +1,10 @@
 1. python -m venv langchain_env
 2. langchain_env\Scripts\activate
 3. pip install -r requirements.txt
-4. python app_streamlit.py
+4. streamlit run app_streamlit.py
+
+
+pip install sqlite3 streamlit langchain transformers
+pip install -r requirements.txt --index-url https://pypi.org/simple/
+pip install -r requirements.txt --index-url https://mirrors.aliyun.com/pypi/simple/
+pip install --index-url https://mirrors.aliyun.com/pypi/simple/ langchain

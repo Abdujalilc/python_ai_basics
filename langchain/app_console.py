@@ -1,10 +1,9 @@
 import sqlite3
-from langchain.chains import ConversationalChain
-from langchain.llms import GPTNeo
+from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
-from langchain.agents import initialize_agent
-from langchain.tools import Tool
+from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
+from langchain.agents import Tool, initialize_agent, AgentType
 
 # Connect to SQLite database
 conn = sqlite3.connect('faq.db')
@@ -18,9 +17,9 @@ CREATE TABLE IF NOT EXISTS faq (
 )
 ''')
 
-# Insert some sample data into the table
-cursor.execute("INSERT INTO faq (question, answer) VALUES ('What is LangChain?', 'LangChain is a framework for building language model applications')")
-cursor.execute("INSERT INTO faq (question, answer) VALUES ('How do I use GPT-Neo?', 'You can use GPT-Neo by installing Hugging Face and loading the model')")
+# Insert sample data into the table (avoid duplicate entries)
+cursor.execute("INSERT OR IGNORE INTO faq (question, answer) VALUES ('What is LangChain?', 'LangChain is a framework for building language model applications')")
+cursor.execute("INSERT OR IGNORE INTO faq (question, answer) VALUES ('How do I use GPT-Neo?', 'You can use GPT-Neo by installing Hugging Face and loading the model')")
 conn.commit()
 
 # Query function to search the database
@@ -29,12 +28,15 @@ def get_answer_from_db(query):
     result = cursor.fetchone()
     return result[0] if result else "Sorry, I couldn't find an answer to that."
 
-# Define your LLM and memory
-llm = GPTNeo(model="EleutherAI/gpt-neo-2.7B")
+# Define LLM and memory
+llm = HuggingFaceHub(repo_id="gpt2")  # Replace "gpt2" with a suitable model from Hugging Face
 memory = ConversationBufferMemory(memory_key="chat_history")
 
 # Define the prompt template
 prompt = PromptTemplate(input_variables=["question", "context"], template="Answer the question: {question}. Here is some context: {context}")
+
+# Define LLMChain
+llm_chain = LLMChain(llm=llm, prompt=prompt, memory=memory)
 
 # Create a tool for the database lookup
 db_tool = Tool(
@@ -45,7 +47,12 @@ db_tool = Tool(
 
 # Initialize the agent
 tools = [db_tool]
-agent = initialize_agent(tools, llm, memory=memory, verbose=True)
+agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    agent_type=AgentType.CONVERSATIONAL_REACT_DESCRIPTION,
+    verbose=True
+)
 
 # Main conversation loop
 def chat():

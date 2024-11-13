@@ -1,3 +1,4 @@
 streamlit 
 langchain 
-sqlite3
+torch
+transformers
