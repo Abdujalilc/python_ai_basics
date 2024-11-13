@@ -3,3 +3,4 @@ uvicorn
 transformers
 torch
 python-dotenv
+sentence_transformers

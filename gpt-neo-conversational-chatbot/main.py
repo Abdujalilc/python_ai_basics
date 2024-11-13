@@ -51,10 +51,10 @@ async def ask(request: UserQuery):
         embedded_faq_questions = json.loads(embedded_question)
         similarity = util.cos_sim(current_query_embedded, embedded_faq_questions).item()
         similar_faqs.append((question, answer, similarity))
+    similar_faqs = [faq for faq in similar_faqs if faq[2] >= 0.7]
     similar_faqs = sorted(similar_faqs, key=lambda x: x[2], reverse=True)[:3]
 
-    # Check if similarity exceeds threshold
-    if similar_faqs and similar_faqs[0][2] < 0.7:  # Adjust the threshold as necessary
+    if not similar_faqs:
         return {"response": "I do not know"}
 
     # Step 3: Retrieve previous user conversations
@@ -66,9 +66,10 @@ async def ask(request: UserQuery):
     # Step 4: Create context with similar answers and conversation history
     context = "\n".join([f"FAQ - Q: {q}\nA: {a}" for q, a, _ in similar_faqs] + 
                     [f"History - Q: {q}\nA: {a}" for q, a in conversation_history])
-    
-    # Step 5: Generate GPT-Neo response
-    gpt_response = gpt_neo(f"{context}\nQ: {user_query}\nA:", max_new_tokens=100)[0]["generated_text"].split("A:")[-1]
+
+    # Add an end marker after the user's question
+    gpt_response = gpt_neo(f"{context}\nQ: {user_query}\nA:", max_new_tokens=100)[0]["generated_text"].split("A:")[-1].split("Q:")[0].strip()
+    ##gpt_response = gpt_response.split("A:")[-1].strip()
 
     # Step 6: Save response to conversations
     cursor.execute("DELETE FROM conversations WHERE timestamp < ?", (thirty_minutes_ago,))
