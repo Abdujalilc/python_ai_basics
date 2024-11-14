@@ -15,7 +15,13 @@ app = FastAPI()
 # Load the local model and tokenizer using pipeline
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
-llm_pipeline = pipeline("text-generation", model=model, tokenizer=tokenizer, max_length=100)
+llm_pipeline = pipeline(
+    "text-generation", 
+    model=model, 
+    tokenizer=tokenizer, 
+    max_new_tokens=50,  # Only limits generated tokens
+    truncation=True     # Ensures inputs are truncated to fit model max length
+)
 
 # Define request model
 class ChatRequest(BaseModel):
@@ -48,11 +54,13 @@ memory = ConversationBufferMemory()
 
 # Define a prompt template for the assistant
 prompt_template = PromptTemplate(
-    input_variables=["history", "input"],
+    input_variables=["history", "retrieved_content", "input"],
     template="""
     You are a helpful assistant.
     Here is the conversation history:
     {history}
+    Based on the following information from the document:
+    {retrieved_content}
     User: {input}
     Assistant:"""
 )
@@ -63,8 +71,16 @@ async def chat(request: ChatRequest):
     user_input = request.input
     conversation_history = memory.load_memory_variables({}).get("history", "")
 
-    # Generate the prompt as a string
-    prompt = prompt_template.format(history=conversation_history, input=user_input)
+    # Retrieve relevant content from the PDF
+    docs = vector_store.similarity_search(user_input, k=3)  # Retrieve top 3 most similar chunks
+    retrieved_content = "\n".join([doc.page_content for doc in docs])
+
+    # Generate the prompt with retrieved content
+    prompt = prompt_template.format(
+        history=conversation_history,
+        retrieved_content=retrieved_content,
+        input=user_input
+    )
 
     # Generate response using the llm_pipeline
     response = llm_pipeline(prompt)[0]["generated_text"]
@@ -75,4 +91,4 @@ async def chat(request: ChatRequest):
 
 # Run FastAPI app
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run("app1:app", host="127.0.0.1", port=8000, reload=True)
