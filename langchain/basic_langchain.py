@@ -6,7 +6,10 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 import uvicorn
+import os
 
+os.environ['HF_HOME'] = "D:\\huggingface_cache"
+os.environ['TRANSFORMERS_CACHE'] = "D:\\huggingface_cache\\transformers"
 # Initialize FastAPI app
 app = FastAPI()
 
@@ -25,7 +28,7 @@ prompt_template = PromptTemplate(
 )
 
 # Initialize the Hugging Face model pipeline (using GPT-2 as an example)
-llm_pipeline = pipeline("text-generation", model="gpt2")
+llm_pipeline = pipeline("text-generation", model="EleutherAI/gpt-neo-1.3B")
 
 # Define a function to generate responses
 def generate_response(inputs):

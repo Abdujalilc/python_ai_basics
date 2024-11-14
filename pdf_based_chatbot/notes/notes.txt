@@ -1,0 +1,11 @@
+1. python -m venv pdf_chatbot_env
+2. pdf_chatbot_env\Scripts\activate
+3. pip install -r requirements.txt
+4. streamlit run app_streamlit.py
+
+pip install faiss-cpu uvicorn pdfplumber fastapi pydantic sentence-transformers langchain langchain-huggingface langchain-community
+
+pip install sqlite3 streamlit langchain transformers
+pip install -r requirements.txt --index-url https://pypi.org/simple/
+pip install -r requirements.txt --index-url https://mirrors.aliyun.com/pypi/simple/
+pip install --index-url https://mirrors.aliyun.com/pypi/simple/ langchain
