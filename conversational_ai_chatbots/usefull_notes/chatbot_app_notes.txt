@@ -1,0 +1,15 @@
+1. python -m venv chatbot_env
+2. chatbot_env\Scripts\activate
+3. pip install -r requirements.txt
+4. python chatbot_app.py
+
+-----------------------------------------
+Required Python modules:
+
+transformers: For pretrained language models.
+sentence-transformers: For text embeddings.
+faiss-cpu: For vector similarity search.
+gradio: For building the chatbot interface.
+sqlite3: Built-in, no installation required.
+
+pip install transformers sentence-transformers faiss-cpu gradio
