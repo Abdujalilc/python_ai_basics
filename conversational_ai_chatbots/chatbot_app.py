@@ -74,4 +74,4 @@ with gr.Blocks() as app:
     add_btn.click(add_to_db, inputs=[knowledge_input], outputs=[add_status])
 
 # Step 7: Run Locally
-app.launch(share=True)
+app.launch(share=True, server_port=8092)
