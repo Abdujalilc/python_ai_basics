@@ -19,8 +19,8 @@ db.commit()
 # Prepare FAISS Index
 def prepare_faiss():
     cursor.execute("SELECT content FROM knowledge")
-    rows = cursor.fetchall()
-    contents = [row[0] for row in rows]
+    knowledges = cursor.fetchall()
+    contents = [row[0] for row in knowledges]
     embeddings = embedder.encode(contents)
     index = faiss.IndexFlatL2(embeddings.shape[1]) if contents else None
     if index:
