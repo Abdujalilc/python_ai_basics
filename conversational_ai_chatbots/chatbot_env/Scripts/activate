@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\publish_deploy\python\python_ai_basics\conversational_ai_chatbots\chatbot_env"
+VIRTUAL_ENV="D:\Projects\python\python_ai_basics\conversational_ai_chatbots\chatbot_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
