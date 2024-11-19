@@ -1,5 +1,0 @@
-1. python -m venv chatbot_env
-2. chatbot_env\Scripts\activate
-3. pip install -v transformers sentence-transformers faiss-cpu streamlit
-4. streamlit run chatbot_streamlit.py --server.port 8092
-
