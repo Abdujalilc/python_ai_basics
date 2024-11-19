@@ -11,9 +11,10 @@ def prepare_faiss():
     embeddings = embedder.encode(contents) if contents else []
 
     index = faiss.IndexFlatL2(embedder.get_sentence_embedding_dimension())
-    if embeddings:
+    if len(embeddings) > 0:  # Check if there are embeddings
         index.add(embeddings)
 
     return index, contents
+
 
 index, knowledge_base = prepare_faiss()

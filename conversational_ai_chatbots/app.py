@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from models import ChatRequest, KnowledgeRequest
-from chatbot_logic import chatbot_logic, add_to_knowledge
+from chatbot_response import chatbot_logic
+from add_knowledge import add_to_knowledge
 
 app = FastAPI()
 
