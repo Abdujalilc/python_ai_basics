@@ -1,10 +1,9 @@
 from fastapi import APIRouter
-from models import ChatRequest
-from chatbot_response import chatbot_logic
+from schemas.chat_request import ChatRequest
+from services.chatbot_logic import chatbot_logic
 
 router = APIRouter()
 
 @router.post("/chat")
-def chat(request: ChatRequest):
-    response = chatbot_logic(request.question)
-    return {"response": response}
+def chat_endpoint(request: ChatRequest):
+    return {"response": chatbot_logic(request.question)}
