@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from controllers.chat import router as chat_router
-from controllers.knowledge import router as knowledge_router
-from controllers.redirect import router as redirect_router
+from routers.chat import router as chat_router
+from routers.knowledge import router as knowledge_router
+from routers.redirect import router as redirect_router
 
 app = FastAPI()
 

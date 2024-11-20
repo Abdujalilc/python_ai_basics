@@ -1,9 +1,9 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-def load_language_model(model_name: str = "distilgpt2"):
-    """Load GPT-based language model and tokenizer."""
-    lm_model = AutoModelForCausalLM.from_pretrained(model_name)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    return lm_model, tokenizer
+def load_language_model(pretrained_model="distilgpt2"):
+    """Load the GPT-based language model and tokenizer."""
+    model = AutoModelForCausalLM.from_pretrained(pretrained_model)
+    tokenizer = AutoTokenizer.from_pretrained(pretrained_model)
+    return model, tokenizer
 
 lm_model, tokenizer = load_language_model()
