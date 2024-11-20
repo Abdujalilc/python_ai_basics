@@ -4,22 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="./libraries/css/bootstrap.min.css" rel="stylesheet">
     <title>Sidebar Navigation</title>
     <style>
         .sidebar {
             width: 20%;
-            /* 1/5 proportion */
             height: 100vh;
-            /* Full height */
             position: fixed;
         }
 
         .content-area {
-            margin-left: 20%;
-            /* Offset for the sidebar */
-            width: 80%;
-            /* Remaining space */
+            margin-left: 25%;
+            width: 70%;
         }
     </style>
 </head>
@@ -28,32 +24,28 @@
     <div class="sidebar bg-light">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#menu1" role="button"
-                    aria-expanded="false" aria-controls="menu1">Menu 1</a>
-                <div class="collapse" id="menu1">
-                    <ul class="list-unstyled ps-3">
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                    </ul>
-                </div>
+                <a class="nav-link" href="#" onclick="loadContent('conv_chatbot.html')">Menu 1</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#menu2" role="button"
-                    aria-expanded="false" aria-controls="menu2">Menu 2</a>
-                <div class="collapse" id="menu2">
-                    <ul class="list-unstyled ps-3">
-                        <li><a href="#">Link 3</a></li>
-                        <li><a href="#">Link 4</a></li>
-                    </ul>
-                </div>
+                <a class="nav-link" href="#" onclick="loadContent('page2.html')">Menu 2</a>
             </li>
         </ul>
     </div>
-    <div class="content-area p-4">
+    <div class="content-area p-4" id="content">
         <h1>Welcome</h1>
         <p>To conversational chatbots</p>
     </div>
-    <script src="bootstrap.min.js"></script>
+    <script>
+        // Function to load content dynamically
+        function loadContent(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading content:', error));
+        }
+    </script>
+    <script src="./libraries/js/bootstrap.min.js"></script>
 </body>
-
 </html>
