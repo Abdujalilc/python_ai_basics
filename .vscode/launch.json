@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Chatbot App",
+            "type": "python",
+            "request": "launch",
+            "program": "chatbot/app.py",  // Update to the relative path of your app.py
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

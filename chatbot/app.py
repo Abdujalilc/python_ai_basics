@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from routers.chat import router as chat_router
 from routers.knowledge import router as knowledge_router
 from routers.redirect import router as redirect_router
+from custom_faiss.faiss_manager_singleton import faiss_manager
 
+faiss_manager.refresh_index()
 
 app = FastAPI()
 

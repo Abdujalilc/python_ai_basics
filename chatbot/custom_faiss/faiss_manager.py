@@ -19,9 +19,10 @@ class FaissManager:
         """Create and prepare FAISS index."""
         embeddings = self.embedder.encode(contents) if contents else []
         index = faiss.IndexFlatL2(self.embedder.get_sentence_embedding_dimension())
-        if embeddings:
+        if len(embeddings) > 0:  # Directly check the length of embeddings
             index.add(embeddings)
         return index
+
 
     def search(self, query, k=5):
         """Search the FAISS index."""
