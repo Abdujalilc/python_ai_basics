@@ -1,4 +1,4 @@
-from faiss.faiss_index import prepare_faiss
+from custom_faiss.faiss_index import prepare_faiss
 from database.database_utils import fetch_all_knowledge
 
 class FaissManager:

@@ -1,4 +1,4 @@
-from faiss.faiss_manager import FaissManager
+from custom_faiss.faiss_manager import FaissManager
 from models.language_model import lm_model, tokenizer
 from models.faiss_embedder import embedder
 

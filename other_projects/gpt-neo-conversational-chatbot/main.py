@@ -13,7 +13,7 @@ embedder = SentenceTransformer('all-MiniLM-L6-v2')
 gpt_neo = pipeline("text-generation", model="EleutherAI/gpt-neo-1.3B")
 
 # SQLite setup
-conn = sqlite3.connect('chatbot.db', check_same_thread=False)
+conn = sqlite3.connect('db', check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS faqs (id INTEGER PRIMARY KEY, question TEXT, answer TEXT, embedding BLOB)''')
 cursor.execute('''CREATE TABLE IF NOT EXISTS conversations (user_id TEXT, question TEXT, answer TEXT, timestamp DATETIME DEFAULT (DATETIME('now', 'localtime')))''')
