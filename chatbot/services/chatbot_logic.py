@@ -1,8 +1,6 @@
-from custom_faiss.faiss_manager import FaissManager
+from custom_faiss.faiss_manager_singleton import faiss_manager
 from models.language_model import lm_model, tokenizer
 from models.faiss_embedder import embedder
-
-faiss_manager = FaissManager(embedder)
 
 def chatbot_logic(user_input: str):
     """Core chatbot logic."""
