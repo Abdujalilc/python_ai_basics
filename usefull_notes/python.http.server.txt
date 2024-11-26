@@ -1,0 +1,6 @@
+/your-project
+  ├── index.html
+  ├── styles.css
+  ├── script.js
+
+  python -m http.server 5500

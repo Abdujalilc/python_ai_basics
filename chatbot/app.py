@@ -3,10 +3,20 @@ from routers.chat import router as chat_router
 from routers.knowledge import router as knowledge_router
 from routers.redirect import router as redirect_router
 from custom_faiss.faiss_manager_singleton import faiss_manager
+from fastapi.middleware.cors import CORSMiddleware
 
 faiss_manager.refresh_index()
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with your frontend's URL for better security
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Include routers
 app.include_router(chat_router)

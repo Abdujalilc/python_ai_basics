@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
 </head>
+
 <body>
     <h1>Chatbot</h1>
     <div>
         <textarea id="question" placeholder="Type your question here..." rows="4" cols="150"></textarea><br>
-        <button id="chatButton" onclick="sendChat()">Send</button>
+        <button type="button" id="chatButton" onclick="sendChat()">Send</button>
         <span id="chatLoading" style="display: none;">Loading...</span>
     </div>
     <div>
@@ -18,68 +20,11 @@
     </div>
     <div>
         <h2>Add Knowledge</h2>
-        <textarea id="content" placeholder="Add new knowledge..." rows="4" cols="150"></textarea><br>
-        <button id="addButton" onclick="addKnowledge()">Add</button>
+        <textarea id="newContent" placeholder="Add new knowledge..." rows="4" cols="150"></textarea><br>
+        <button type="button" id="addButton" onclick="addKnowledge(event)">Add</button>
         <span id="addLoading" style="display: none;">Loading...</span>
-        <p id="status"></p>
+        <br>Result will be here: <p id="status"></p>
     </div>
-
-    <script>
-        const apiUrl = "http://127.0.0.1:8092";
-
-        async function sendChat() {
-            const question = document.getElementById("question").value;
-            const responseElem = document.getElementById("response");
-            const chatButton = document.getElementById("chatButton");
-            const chatLoading = document.getElementById("chatLoading");
-
-            responseElem.textContent = "";
-            chatLoading.style.display = "inline";
-            chatButton.disabled = true;
-
-            try {
-                const res = await fetch(`${apiUrl}/chat`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ question })
-                });
-
-                const data = await res.json();
-                responseElem.textContent = data.response;
-            } catch (error) {
-                responseElem.textContent = "Error: Unable to fetch response.";
-            } finally {
-                chatLoading.style.display = "none";
-                chatButton.disabled = false;
-            }
-        }
-
-        async function addKnowledge() {
-            const content = document.getElementById("content").value;
-            const statusElem = document.getElementById("status");
-            const addButton = document.getElementById("addButton");
-            const addLoading = document.getElementById("addLoading");
-
-            statusElem.textContent = "";
-            addLoading.style.display = "inline";
-            addButton.disabled = true;
-
-            try {
-                const res = await fetch(`${apiUrl}/add_knowledge`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ content })
-                });
-
-                const data = await res.json();
-                statusElem.textContent = data.status;
-            } catch (error) {
-                statusElem.textContent = "Error: Unable to add knowledge.";
-            } finally {
-                addLoading.style.display = "none";
-                addButton.disabled = false;
-            }
-        }
-    </script>
 </body>
+
 </html>

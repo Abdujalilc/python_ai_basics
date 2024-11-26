@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
     <link href="./libraries/css/bootstrap.min.css" rel="stylesheet">
     <title>Sidebar Navigation</title>
     <style>
@@ -24,10 +25,10 @@
     <div class="sidebar bg-light">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadContent('conv_html')">Menu 1</a>
+                <a class="nav-link" href="#" onclick="loadContent('conv_chatbot.html')">distilgpt2 LLM</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadContent('page2.html')">Menu 2</a>
+                <a class="nav-link" href="#" onclick="loadContent('page2.html')">Under Construction</a>
             </li>
         </ul>
     </div>
@@ -36,16 +37,22 @@
         <p>To conversational chatbots</p>
     </div>
     <script>
-        // Function to load content dynamically
         function loadContent(page) {
             fetch(page)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('content').innerHTML = data;
+                    const contentDiv = document.getElementById('content');
+                    contentDiv.innerHTML = data;
+
+                    /*const script = document.createElement('script');
+                    script.src = 'libraries/js/conv_chatbot.js';
+                    document.body.appendChild(script);*/
                 })
                 .catch(error => console.error('Error loading content:', error));
         }
+
     </script>
-    <script src="./libraries/js/bootstrap.min.js"></script>
+    <script src="libraries/js/bootstrap.min.js"></script>
+    <script src="libraries/js/conv_chatbot.js"></script>
 </body>
 </html>

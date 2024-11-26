@@ -1,0 +1,11 @@
+A tensor is a multidimensional array used to represent data in machine learning, mathematics, and physics. 
+It's like a generalization of:
+
+Scalar (0D): A single number (e.g., 5).
+Vector (1D): A list of numbers (e.g., [1, 2, 3]).
+Matrix (2D): A table of numbers (e.g., [[1, 2], [3, 4]]).
+Higher dimensions (3D, 4D, etc.): Data cubes or beyond.
+
+import torch
+tensor = torch.tensor([[1, 2], [3, 4]])  # 2D Tensor
+print(tensor)

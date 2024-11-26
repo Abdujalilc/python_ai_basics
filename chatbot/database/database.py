@@ -13,7 +13,5 @@ db = sqlite3.connect(db_path, check_same_thread=False)
 
 # Initialize the database
 cursor = db.cursor()
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS knowledge (id INTEGER PRIMARY KEY, content TEXT);
-""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS knowledge (id INTEGER PRIMARY KEY, content TEXT);""")
 db.commit()

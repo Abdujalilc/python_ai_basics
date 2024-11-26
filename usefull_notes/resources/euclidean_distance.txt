@@ -1,0 +1,12 @@
+The similarity threshold of 1.2 is relatively lenient in FAISS when using L2 (Euclidean distance):
+
+Smaller values (e.g., 0.5-1.0):
+
+Stricter: Only very close matches are considered.
+Harder to find matches.
+Larger values (e.g., >1.2):
+
+More lenient: Allows less similar results.
+Increases false positives.
+At 1.2, it balances flexibility and accuracy, 
+but adjust based on your embedding range or model performance.
