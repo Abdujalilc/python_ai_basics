@@ -2,7 +2,42 @@
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    resize: vertical; /* Allow vertical resizing only */
-    padding: 10px; /* Optional: Adds padding for better usability */
-    font-size: 16px; /* Optional: Adjusts font size */
+    resize: vertical;
+    /* Allow vertical resizing only */
+    padding: 10px;
+    /* Optional: Adds padding for better usability */
+    font-size: 16px;
+    /* Optional: Adjusts font size */
+}
+
+.settings-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns */
+    gap: 10px 20px;
+    /* Row and column gap */
+    max-width: 600px;
+    /* Optional: Adjust the width */
+    margin: 0 auto;
+}
+
+.setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    flex: 1;
+    /* Labels take up available space */
+    font-weight: bold;
+}
+
+input {
+    width: 80px;
+    /* Short width for number inputs */
+    padding: 5px;
+    font-size: 14px;
+    text-align: right;
+    /* Align numbers to the right */
 }

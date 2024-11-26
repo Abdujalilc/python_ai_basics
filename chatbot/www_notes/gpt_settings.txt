@@ -1,0 +1,6 @@
+self.faiss_data.search(query_embedding, nearest_neighbor_number) - nearest_neighbor_number
+
+similarity_threshold = 1.2
+
+m_model.generate(inputs["input_ids"], max_new_tokens=50, temperature=0.3, top_k=20, top_p=0.85)
+max_new_tokens, temperature, top_k, top_p
