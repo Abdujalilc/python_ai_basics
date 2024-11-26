@@ -12,32 +12,37 @@
 
 .settings-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* Two columns */
-    gap: 10px 20px;
-    /* Row and column gap */
-    max-width: 600px;
-    /* Optional: Adjust the width */
-    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
+    gap: 10px 20px; /* Row and column gap */
+    max-width: 900px; /* Adjust the width to fit three columns */
+    margin: 0 auto; /* Center the container */
 }
 
 .setting {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 5px; /* Small gap between the label and input */
 }
 
 label {
-    flex: 1;
-    /* Labels take up available space */
     font-weight: bold;
+    margin-right: 5px; /* Adjust the spacing between the label and input */
+    white-space: nowrap; /* Prevent labels from breaking onto multiple lines */
 }
 
-input {
-    width: 80px;
-    /* Short width for number inputs */
-    padding: 5px;
-    font-size: 14px;
-    text-align: right;
-    /* Align numbers to the right */
+input, select {
+    width: 60px; /* Set a short width for inputs */
+    padding: 3px; /* Reduce padding for a compact look */
+    font-size: 12px; /* Slightly smaller font size */
+    text-align: right; /* Align numbers to the right for readability */
+    box-sizing: border-box; /* Include padding in the width */
+}
+
+select {
+    width: 100%; /* Makes the select box take full width of the container */
+    max-width: 150px; /* Optional: Limits the maximum width */
+    padding: 5px; /* Adds padding for better usability */
+    font-size: 14px; /* Ensures text is readable */
+    box-sizing: border-box; /* Includes padding and border in width calculation */
 }
