@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
     <link rel="stylesheet" href="/frontend/libraries/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/frontend/libraries/css/site.css">
     <title>Sidebar Navigation</title>
     <style>
         .sidebar {
@@ -25,10 +26,13 @@
     <div class="sidebar bg-light">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadContent('/frontend/conv_chatbot.html')">distilgpt2 LLM</a>
+                <a class="btn btn-primary m-1 w-100" href="/" >Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadContent('page2.html')">Under Construction</a>
+                <a class="btn btn-primary m-1 w-100" href="#" onclick="loadContent('/frontend/conv_chatbot.html')">distilgpt2 LLM</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary m-1 w-100" href="#" onclick="loadContent('page2.html')">Under Construction</a>
             </li>
         </ul>
     </div>

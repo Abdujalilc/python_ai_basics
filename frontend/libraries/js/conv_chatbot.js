@@ -39,6 +39,9 @@ async function addKnowledge(event) {
     addButton.disabled = true;
 
     try {
+        // Wait for 10 seconds
+        await new Promise(resolve => setTimeout(resolve, 10000));
+
         const res = await fetch(`${apiUrl}/add_knowledge`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },

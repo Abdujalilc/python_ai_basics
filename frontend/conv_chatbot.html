@@ -10,7 +10,7 @@
 <body>
     <h1>Chatbot with distilgpt2 model</h1>
     <div>
-        <textarea id="question" placeholder="Type your question here..." rows="4" cols="150"></textarea><br>
+        <textarea class="t-area" id="question" placeholder="Type your question here..." rows="4" cols="100"></textarea><br>
         <button type="button" id="chatButton" onclick="sendChat()">Send</button>
         <span id="chatLoading" style="display: none;">Loading...</span>
     </div>
@@ -20,7 +20,7 @@
     </div>
     <div>
         <h2>Add Knowledge</h2>
-        <textarea id="newContent" placeholder="Add new knowledge..." rows="4" cols="150"></textarea><br>
+        <textarea class="t-area" id="newContent" placeholder="Add new knowledge..." rows="4" cols="100"></textarea><br>
         <button type="button" id="addButton" onclick="addKnowledge(event)">Add</button>
         <span id="addLoading" style="display: none;">Loading...</span>
         <br>Result will be here: <p id="status"></p>
