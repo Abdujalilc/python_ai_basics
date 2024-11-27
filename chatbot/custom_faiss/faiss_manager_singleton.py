@@ -1,6 +1,10 @@
 from custom_faiss.faiss_manager import FaissManager
-from models.faiss_embedder import create_embedder
 
-def create_faiss_manager(model_name: str, distance_metric:str):
-    embedder = create_embedder(model_name)
-    return FaissManager(embedder,distance_metric)
+# Global singleton instance
+_faiss_manager = None
+
+def get_faiss_manager(embedder_name="all-MiniLM-L12-v2", distance_metric="euclidean"):
+    global _faiss_manager
+    if _faiss_manager is None:
+        _faiss_manager = FaissManager(embedder_name, distance_metric)
+    return _faiss_manager

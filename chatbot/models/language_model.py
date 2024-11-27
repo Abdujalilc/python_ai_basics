@@ -10,10 +10,11 @@ def cache_language_models(model_names):
 # Example usage
 model_list = [
     "distilgpt2",
-    "gpt-neo-125M",
-    "gpt-neo-1.3B",
-    "gpt-neo-2.7B"
+    "EleutherAI/gpt-neo-125M",
+    "EleutherAI/gpt-neo-1.3B",
+    "EleutherAI/gpt-neo-2.7B"
 ]
+
 
 cache_language_models(model_list)
 
