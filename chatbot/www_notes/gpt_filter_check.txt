@@ -13,11 +13,11 @@ class TransformerSettings(BaseModel):
     temperature: float = 0.3 +
     top_k: int = 20 + 
     top_p: float = 0.85 + 
-    repetition_penalty: float = 1.2
-    length_penalty: float = 1.0
-    stop_sequence: str = ""
+    repetition_penalty: float = 1.2 +
+    length_penalty: float = 1.0 +
+    stop_sequence: str = "" +
     seed: int = 42
-    beam_width: int = 3
+    beam_width: int = 3 + 
 
 class ChatRequest(BaseModel):
     question: str
