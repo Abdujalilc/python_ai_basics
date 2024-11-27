@@ -1,0 +1,20 @@
+{
+    "faiss_settings": {
+        "nearest_neighbor": "5",
+        "similarity_threshold": "1.2",
+        "distance_metric": "cosine"
+    },
+    "transformer_settings": {
+        "language_model": "",
+        "max_new_tokens": "50",
+        "temperature": "0.3",
+        "top_k": "20",
+        "top_p": "0.85",
+        "repetition_penalty": "1.2",
+        "length_penalty": "1.0",
+        "stop_sequence": "",
+        "seed": "42",
+        "beam_width": "3"
+    },
+    "question": "qwer"
+}

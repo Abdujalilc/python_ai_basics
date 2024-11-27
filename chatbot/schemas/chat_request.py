@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 
 class FAISSSettings(BaseModel):
+    embedder_model : str = "all-MiniLM-L12-v2"
     nearest_neighbor: int = 5
     similarity_threshold: float = 1.2
     distance_metric: str = "cosine"
 
 class TransformerSettings(BaseModel):
+    skip_special_tokens: bool = False
     language_model: str = ""
     max_new_tokens: int = 50
     temperature: float = 0.3

@@ -1,3 +1,4 @@
 from sentence_transformers import SentenceTransformer
 
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+def create_embedder(model_name: str):
+    return SentenceTransformer(model_name)

@@ -3,11 +3,13 @@ const apiUrl = "http://127.0.0.1:8092";
 async function sendChat() {
     const formData = {
         faiss_settings: {
+            embedder_model : document.getElementById("embedder-model").value,
             nearest_neighbor: document.getElementById("nearest-neighbor-number").value,
             similarity_threshold: document.getElementById("similarity-threshold").value,
             distance_metric: document.getElementById("distance-metric").value,
         },
         transformer_settings: {
+            skip_special_tokens: document.getElementById("skip-special-tokens").value,
             language_model: document.getElementById("language-model").value,
             max_new_tokens: document.getElementById("max-new-tokens").value,
             temperature: document.getElementById("temperature").value,
