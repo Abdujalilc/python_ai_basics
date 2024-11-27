@@ -1,5 +1,7 @@
 from custom_faiss.faiss_manager import FaissManager
-from models.faiss_embedder import embedder
+from models.faiss_embedder import create_embedder
 
-# Create a single shared instance of FaissManager
-faiss_manager = FaissManager(embedder)
+
+def create_faiss_manager(model_name: str):
+    embedder = create_embedder(model_name)
+    return FaissManager(embedder)
