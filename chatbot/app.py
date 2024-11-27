@@ -4,10 +4,10 @@ import os
 from routers.chat import router as chat_router
 from routers.knowledge import router as knowledge_router
 from routers.serve_index import router as redirect_to_index
-from custom_faiss.faiss_manager_singleton import faiss_manager
+from custom_faiss.faiss_manager_singleton import get_faiss_manager
 from fastapi.middleware.cors import CORSMiddleware
 
-faiss_manager.refresh_index()
+faiss_manager = get_faiss_manager()
 
 app = FastAPI()
 

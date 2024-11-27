@@ -1,18 +1,30 @@
 import faiss
 import numpy as np
 from database.database_utils import fetch_all_knowledge
-
+from models.faiss_embedder import create_embedder
 
 class FaissManager:
-    def __init__(self, embedder, distance_metric="euclidean"):
+    def __init__(self, embedder_name, distance_metric="euclidean"):
+        self.embedder_name = embedder_name
+        self.distance_metric = distance_metric
+        self.embedder = self.create_embedder(embedder_name)
         self.faiss_data = None
-        self.raw_knowledge = []
-        self.embedder = embedder
-        self.distance_metric = distance_metric  # Store the distance metric
+        self.refresh_index()
+
+    def create_embedder(self, embedder_name):
+        # Replace with actual embedder creation logic
+        return create_embedder(embedder_name)
 
     def refresh_index(self):
         self.raw_knowledge = fetch_all_knowledge()
         self.faiss_data = self.prepare_faiss(self.raw_knowledge)
+
+    def update_parameters(self, embedder_name, distance_metric):
+        if self.embedder_name != embedder_name or self.distance_metric != distance_metric:
+            self.embedder_name = embedder_name
+            self.distance_metric = distance_metric
+            self.embedder = self.create_embedder(embedder_name)
+            self.refresh_index()  
 
     def prepare_faiss(self, contents):
         embeddings = self.embedder.encode(contents) if contents else []

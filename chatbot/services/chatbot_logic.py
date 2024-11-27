@@ -1,10 +1,12 @@
 from schemas.chat_request import ChatRequest
-from custom_faiss.faiss_manager_singleton import create_faiss_manager
+from custom_faiss.faiss_manager_singleton import get_faiss_manager
+from custom_faiss.faiss_manager_update import update_faiss_manager
 from models.language_model import load_language_model
 import torch
 
 def chatbot_logic(req: ChatRequest):
-    faiss_manager = create_faiss_manager(req.faiss_settings.embedder_model,req.faiss_settings.distance_metric)
+    update_faiss_manager(req.faiss_settings.embedder_model, req.faiss_settings.distance_metric)
+    faiss_manager = get_faiss_manager()
     if not faiss_manager.raw_knowledge or not faiss_manager.faiss_data:
         return "Knowledge base is empty. Add content first."
 
