@@ -5,9 +5,11 @@
             "name": "Python: Chatbot App",
             "type": "python",
             "request": "launch",
-            "program": "chatbot/app.py",  // Update to the relative path of your app.py
-            "console": "integratedTerminal",
-            "justMyCode": true
+            "program": "app.py",
+            "console": "externalTerminal",
+            "justMyCode": true,
+            "cwd": "D:/Projects/python/python_ai_basics/chatbot"
         }
+        
     ]
 }
