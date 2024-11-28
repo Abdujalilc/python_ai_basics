@@ -6,4 +6,4 @@ router = APIRouter()
 
 @router.post("/add_knowledge")
 def add_knowledge(newKnowledge: KnowledgeRequest):
-    return {"message": add_to_knowledge(newKnowledge.content)}
+    return {"message": add_to_knowledge(newKnowledge)}

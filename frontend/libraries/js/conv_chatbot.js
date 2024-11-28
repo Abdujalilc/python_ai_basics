@@ -3,7 +3,7 @@ const apiUrl = "http://127.0.0.1:8092";
 async function sendChat() {
     const chatLoading = document.getElementById("chatLoading");
     const responseElement = document.getElementById("response");
-    
+
     chatLoading.style.display = "inline"; // Show loading
     responseElement.textContent = ""; // Clear previous response
 
@@ -59,13 +59,22 @@ async function addKnowledge(event) {
     addButton.disabled = true;
 
     try {
+        const formDataKnowledge = {
+            embedder_model: document.getElementById("embedder-model").value,
+            distance_metric: document.getElementById("distance-metric").value,
+            content: document.getElementById("newContent").value,
+        };
         // Wait for 10 seconds
         await new Promise(resolve => setTimeout(resolve, 10000));
 
         const res = await fetch(`${apiUrl}/add_knowledge`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ content })
+            body: JSON.stringify({
+                embedder_model: document.getElementById("embedder-model").value,
+                distance_metric: document.getElementById("distance-metric").value,
+                content: document.getElementById("newContent").value
+            })
         });
 
         const data = await res.json();
