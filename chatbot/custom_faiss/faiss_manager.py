@@ -3,8 +3,9 @@ import numpy as np
 from database.database_utils import fetch_all_knowledge
 from models.faiss_embedder import create_embedder
 
+
 class FaissManager:
-    def __init__(self, embedder_name, distance_metric="euclidean"):
+    def __init__(self, embedder_name, distance_metric="cosine"):
         self.embedder_name = embedder_name
         self.distance_metric = distance_metric
         self.embedder = self.create_embedder(embedder_name)
@@ -24,27 +25,31 @@ class FaissManager:
             self.embedder_name = embedder_name
             self.distance_metric = distance_metric
             self.embedder = self.create_embedder(embedder_name)
-            self.refresh_index()  
+            self.refresh_index()
 
     def prepare_faiss(self, contents):
-        embeddings = self.embedder.encode(contents) if contents else []
+        # Get embeddings from the embedder
+        embeddings = self.embedder.encode(contents) if contents else None
         
         # Handle cosine similarity normalization
-        if self.distance_metric == "cosine" and embeddings:
+        if self.distance_metric == "cosine" and embeddings is not None and len(embeddings) > 0:
             embeddings = np.array(embeddings)
             embeddings /= np.linalg.norm(embeddings, axis=1, keepdims=True)
             index = faiss.IndexFlatIP(self.embedder.get_sentence_embedding_dimension())
         else:  # Default to Euclidean distance
             index = faiss.IndexFlatL2(self.embedder.get_sentence_embedding_dimension())
         
-        if len(embeddings) > 0:
+        # Add embeddings to the FAISS index if there are any
+        if embeddings is not None and len(embeddings) > 0:
             index.add(embeddings)
+        
         return index
 
     def search(self, query, nearest_neighbor_number=5):
         if not self.faiss_data:
             raise ValueError("FAISS index is not initialized.")
         
+        # Encode the query
         query_embedding = self.embedder.encode([query])
         
         # Normalize query embedding for cosine similarity
@@ -52,5 +57,6 @@ class FaissManager:
             query_embedding = np.array(query_embedding)
             query_embedding /= np.linalg.norm(query_embedding, axis=1, keepdims=True)
         
+        # Search for the nearest neighbors
         neighbor_distances, top_nearest_neighbor_ids = self.faiss_data.search(query_embedding, nearest_neighbor_number)
         return neighbor_distances, top_nearest_neighbor_ids

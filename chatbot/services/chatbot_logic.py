@@ -37,13 +37,15 @@ def chatbot_logic(req: ChatRequest):
         repetition_penalty=req.transformer_settings.repetition_penalty,
         length_penalty=req.transformer_settings.length_penalty,
         num_beams=req.transformer_settings.beam_width
-        )
+    )
 
     generated_text = tokenizer.decode(output[0], skip_special_tokens=req.transformer_settings.skip_special_tokens)
 
     # Stop at stop_sequence if it exists
     stop_sequence = req.transformer_settings.stop_sequence
-    if stop_sequence in generated_text:
+
+    if stop_sequence and stop_sequence in generated_text:
         generated_text = generated_text.split(stop_sequence)[0]
 
     return generated_text
+

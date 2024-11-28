@@ -6,4 +6,4 @@ router = APIRouter()
 
 @router.post("/chat")
 def chat_endpoint(request: ChatRequest):
-    return {"response": chatbot_logic(request.question)}
+    return {"response": chatbot_logic(request)}
