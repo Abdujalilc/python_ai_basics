@@ -67,7 +67,7 @@ async function addKnowledge(event) {
         // Wait for 10 seconds
         await new Promise(resolve => setTimeout(resolve, 10000));
 
-        const res = await fetch(`${apiUrl}/add_knowledge`, {
+        const res = await fetch(apiUrl + '/add_knowledge', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
