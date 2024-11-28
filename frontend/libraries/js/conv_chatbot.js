@@ -1,4 +1,5 @@
-const apiUrl = "http://127.0.0.1:8092";
+//const apiUrl = "http://127.0.0.1:8092";
+const apiUrl = "https://aigpt.wiut.uz";
 
 async function sendChat() {
     const chatLoading = document.getElementById("chatLoading");
