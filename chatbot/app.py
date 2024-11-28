@@ -7,7 +7,7 @@ from routers.serve_index import router as redirect_to_index
 from custom_faiss.faiss_manager_singleton import get_faiss_manager
 from fastapi.middleware.cors import CORSMiddleware
 
-faiss_manager = get_faiss_manager()
+faiss_manager = get_faiss_manager("all-MiniLM-L6-v2","cosine")
 
 app = FastAPI()
 

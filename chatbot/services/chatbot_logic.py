@@ -6,7 +6,7 @@ import torch
 
 def chatbot_logic(req: ChatRequest):
     update_faiss_manager(req.faiss_settings.embedder_model, req.faiss_settings.distance_metric)
-    faiss_manager = get_faiss_manager()
+    faiss_manager = get_faiss_manager(req.faiss_settings.embedder_model, req.faiss_settings.distance_metric)
     if not faiss_manager.raw_knowledge or not faiss_manager.faiss_data:
         return "Knowledge base is empty. Add content first."
 

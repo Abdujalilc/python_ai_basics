@@ -1,15 +1,21 @@
 const apiUrl = "http://127.0.0.1:8092";
 
 async function sendChat() {
+    const chatLoading = document.getElementById("chatLoading");
+    const responseElement = document.getElementById("response");
+    
+    chatLoading.style.display = "inline"; // Show loading
+    responseElement.textContent = ""; // Clear previous response
+
     const formData = {
         faiss_settings: {
-            embedder_model : document.getElementById("embedder-model").value,
+            embedder_model: document.getElementById("embedder-model").value,
             nearest_neighbor: document.getElementById("nearest-neighbor-number").value,
             similarity_threshold: document.getElementById("similarity-threshold").value,
             distance_metric: document.getElementById("distance-metric").value,
         },
         transformer_settings: {
-            skip_special_tokens: document.getElementById("skip-special-tokens").value,
+            skip_special_tokens: document.getElementById("skip-special-tokens").checked,
             language_model: document.getElementById("language-model").value,
             max_new_tokens: document.getElementById("max-new-tokens").value,
             temperature: document.getElementById("temperature").value,
@@ -32,9 +38,11 @@ async function sendChat() {
         });
 
         const data = await response.json();
-        document.getElementById("response").textContent = data.response;
+        responseElement.textContent = data.response;
     } catch (error) {
-        document.getElementById("response").textContent = "Error: Unable to fetch response.";
+        responseElement.textContent = "Error: Unable to fetch response.";
+    } finally {
+        chatLoading.style.display = "none"; // Hide loading
     }
 }
 
