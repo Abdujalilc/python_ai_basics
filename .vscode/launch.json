@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Python: Chatbot App",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "app.py",
             "console": "externalTerminal",

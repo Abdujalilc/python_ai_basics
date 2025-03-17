@@ -115,5 +115,4 @@ def get_all_faqs():
 
 if __name__ == "__main__":
     import uvicorn
-
     uvicorn.run(app, host="localhost", port=8091)
