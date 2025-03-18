@@ -1,0 +1,10 @@
+faiss-cpu 
+uvicorn 
+pdfplumber 
+fastapi 
+pydantic 
+sentence-transformers 
+langchain 
+langchain-huggingface 
+langchain-community
+black

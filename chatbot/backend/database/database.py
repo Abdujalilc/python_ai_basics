@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # Resolve the absolute path to the correct 'data' folder
-db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../data/knowledge.db"))
+db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/knowledge.db"))
 print("Database Path:", db_path)  # Debugging: Verify the resolved path
 
 # Ensure the directory exists

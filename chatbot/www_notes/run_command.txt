@@ -1,4 +1,4 @@
-1. python -m venv gpt_neo_env
-2. gpt_neo_env\Scripts\activate
+1. python -m venv chat_bot_env
+2. chat_bot_env\Scripts\activate
 3. pip install -r requirements.txt
-4. python main.py
+4. python app.py
